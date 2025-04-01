@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Logs
 logs
 *.log
@@ -134,3 +135,21 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+=======
+node_modules
+.env
+data
+async
+modules
+comments.json
+posts.json
+users.json
+utils.js
+README.md
+es6.js
+data.txt
+app.js
+index.js
+main.js
+clean/
+>>>>>>> c025835 (ecommerce)
