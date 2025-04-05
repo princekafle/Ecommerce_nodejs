@@ -14,7 +14,7 @@ export function formatUserData(data) {
 
   export function formatProductData(data, geminiPrompt) {
     return {
-      createdAt: data.createdAt,
+    
       id: data.id,
       name: data.name,
       brand: data.brand,
@@ -22,6 +22,7 @@ export function formatUserData(data) {
       category: data.category,
       description: geminiPrompt|| data.description,
       imageUrls: data.imageUrls,
+      createdAt: data.createdAt,
     };
   }
   // helper function to format user data
