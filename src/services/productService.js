@@ -1,4 +1,5 @@
 // Database related tasks
+import { formatProductData } from "../helpers/dataFormatter.js";
 import Product from "../models/Product.js";
 import uploadFile from "../utils/file.js";
 
@@ -44,8 +45,8 @@ const getAllProducts = async (query, userId) => {
 
 const getProductById = async (id) => {
   const product = await Product.findById(id);
-
-  return product;
+ const geminiResponse = await promptGemini(product); // gemini bata aako response lai product ko description ma halne
+  return formatProductData(product, geminiResponse); 
 };
 
 const createProduct = async (data, files, userId) => {
