@@ -3,6 +3,7 @@ import {
   createProduct,
   deleteProduct,
   getAllProducts,
+  getBrands,
   getCategories,
   getProductById,
   getProductsByUser,
@@ -26,6 +27,7 @@ router.get("/users", auth, getProductsByUser);
 
 router.get("/categories", getCategories);
 
+router.get("/brands", getBrands);
 /**
  * URL: /api/products/:id
  * Method: GET

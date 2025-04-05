@@ -81,6 +81,10 @@ const getCategories = async () => {
   return await Product.distinct("category");
 };
 
+const getBrands = async () => {
+  return await Product.distinct("brand");
+};
+
 export default {
   getAllProducts,
   getProductById,
@@ -88,4 +92,5 @@ export default {
   updateProduct,
   deleteProduct,
   getCategories,
+  getBrands,
 };

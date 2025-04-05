@@ -83,6 +83,12 @@ const getCategories = async (req, res) => {
   res.json(categories);
 };
 
+const getBrands = async (req, res) => {
+  const brands = await productService.getBrands();
+
+  res.json(brands);
+};
+
 export {
   getAllProducts,
   getProductById,
@@ -91,4 +97,5 @@ export {
   deleteProduct,
   getCategories,
   getProductsByUser,
+  getBrands
 };
