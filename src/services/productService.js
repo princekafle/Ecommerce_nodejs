@@ -2,6 +2,7 @@
 import { formatProductData } from "../helpers/dataFormatter.js";
 import Product from "../models/Product.js";
 import uploadFile from "../utils/file.js";
+import promptGemini from "../utils/gemini.js";
 
 // 1. Sort: {fieldName:ORDER} for e.g {price: -1} 1: ASC | -1: DESC
 // 2. Limit: Max no. of items
