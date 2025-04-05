@@ -32,8 +32,11 @@ const port = process.env.PORT || 5000;
 
 app.get("/", (req, res) => {
   res.json({
+    name:"E-commerce API",
+    description: "This is an E-commerce API",
     status: "OK",
-    version: "1.0.0",
+    version: "1.1.0",
+    url: "https://ecommerce-nodejs-five.vercel.app/",
     port: port,
   });
 });
