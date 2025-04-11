@@ -59,4 +59,4 @@ app.use("/page", viewRoute);
 // app.listen(port, () => { 
 //   console.log(`Server started at port ${port}...`);
 // });
-
+export default app;
