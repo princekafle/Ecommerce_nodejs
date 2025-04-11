@@ -11,6 +11,9 @@ import connectCloudinary from "./config/cloudinary.js";
 import multer from "multer";
 import orderRoute from "./routes/orderRoute.js";
 import viewRoute from './/routes/viewRoute.js'
+import cors from "cors";
+
+
 dotenv.config();
 
 const app = express();
@@ -21,7 +24,7 @@ const upload = multer({
   storage: multer.memoryStorage(), // yesle chai file lai ram memory ma temporarily store garxa
 });
 app.use(logger); // hamile yaha logger middleware lai global level ma use gareko xau but yeslai hamile specific route ma ni use garna sakinxa
-
+app.use(cors()); // accept all domains
 // yesle chai hamile json data lai parse garera req.body ma store garxa
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));

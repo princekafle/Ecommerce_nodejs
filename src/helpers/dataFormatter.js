@@ -14,15 +14,14 @@ export function formatUserData(data) {
 
   export function formatProductData(data, geminiPrompt) {
     return {
-    
-      id: data.id,
-      name: data.name,
       brand: data.brand,
-      price: data.price,
       category: data.category,
-      description: geminiPrompt|| data.description,
-      imageUrls: data.imageUrls,
       createdAt: data.createdAt,
+      description: data.description,
+      id: data._id,
+      imageUrls: data.imageUrls,
+      name: data.name,
+      price: data.price,
     };
   }
   // helper function to format user data

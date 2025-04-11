@@ -1,13 +1,19 @@
 import { verifyJWT } from "../utils/jwt.js";
 
 function auth(req, res, next) {
-  const cookie = req.headers.cookie;
+  const authHeader = req.headers.authorization;
 
-  if (!cookie) return res.status(401).send("User not authenticated.");
+  let authToken;
+// we authheader chai frontend ma token check garna ra cookie chai backend ma token check garna ko lagi 
+  if (authHeader && authHeader.startsWith("Bearer ")) {
+    authToken = authHeader.split(" ")[1];
+  } else {
+    const cookie = req.headers.cookie;
 
-  // yesle chai cookie ma vayeko token lai extract garxa
-  // yesle cookie lai split grxa = paxi ko 2nd part ko value ho exact token
-  const authToken = cookie.split("=")[1];
+    if (!cookie) return res.status(401).send("User not authenticated.");
+
+    authToken = cookie.split("=")[1];
+  }
 
   verifyJWT(authToken)
   // if token valid xa vane decoded data((payload of the JWT i.e user ko details, jun chai jwt token verified vaisakepaxi ko user ko data ho ) lai req.user ma store garxa
