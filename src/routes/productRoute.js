@@ -6,12 +6,15 @@ import {
   getBrands,
   getCategories,
   getProductById,
+  getProductsByBrand,
+  getProductsByCategory,
   getProductsByUser,
   updateProduct,
 } from "../controllers/productController.js";
 import auth from "../middlewares/auth.js";
 import roleBasedAuth from "../middlewares/roleBasedAuth.js";
 import { ROLE_ADMIN, ROLE_MERCHANT } from "../constants/roles.js";
+import { get } from "mongoose";
 
 const router = express.Router();
 
@@ -28,6 +31,11 @@ router.get("/users", auth, getProductsByUser);
 router.get("/categories", getCategories);
 
 router.get("/brands", getBrands);
+
+router.get("/category/:category", getProductsByCategory);
+
+router.get("/brand/:brand", getProductsByBrand);
+/**
 /**
  * URL: /api/products/:id
  * Method: GET

@@ -1,7 +1,9 @@
 import User from "../models/User.js";
 import bcrypt from "bcryptjs";
 
+
 import ResetPassword from "../models/ResetPassword.js";
+import sendEmail from "../utils/email.js";
 // yesma vayeko data chai user through req.body bata aauxa 
 const login = async (data) => {
     // yesle chai user bata aako email ra phone snga databaseko email ra phone match garxa
@@ -72,7 +74,11 @@ const forgotPassword = async (email) => {
   });
 
   // Send email to user
-  // {{apiUrl}}/api/auth/reset-password/:userId?token=<otp>
+  
+  await sendEmail(email, {
+    subject: "Reset password link",
+    body: `${process.env.APP_URL}/reset-password/${user?._id}?token=${otp}`,
+  });
 
   return { message: "Reset password link has been sent" }; 
   // yespaxi hamro database ma token ra user id save sahit aru data save hunxa 

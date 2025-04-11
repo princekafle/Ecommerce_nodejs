@@ -89,6 +89,18 @@ const getBrands = async (req, res) => {
   res.json(brands);
 };
 
+const getProductsByCategory = async (req, res) => {
+  const category = req.params.category;
+  const products = await productService.getAllProducts({category});
+  res.json(products);
+}
+
+const getProductsByBrand = async (req, res) => {
+  const brand = req.params.brand;
+  const products = await productService.getAllProducts({brands: brand});
+  res.json(products);
+}
+
 export {
   getAllProducts,
   getProductById,
@@ -97,5 +109,7 @@ export {
   deleteProduct,
   getCategories,
   getProductsByUser,
-  getBrands
+  getBrands,
+  getProductsByCategory,
+  getProductsByBrand,
 };
