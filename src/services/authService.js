@@ -4,6 +4,7 @@ import bcrypt from "bcryptjs";
 
 import ResetPassword from "../models/ResetPassword.js";
 import sendEmail from "../utils/email.js";
+import { ROLE_ADMIN } from "../constants/roles.js";
 // yesma vayeko data chai user through req.body bata aauxa 
 const login = async (data) => {
     // yesle chai user bata aako email ra phone snga databaseko email ra phone match garxa
@@ -41,6 +42,17 @@ const register = async (data) => {
       message: "User already exists.",
     };
   }
+
+    else if (data.roles === ROLE_ADMIN) {
+      const existingAdmin = await User.findOne({ roles: ROLE_ADMIN });
+      if (existingAdmin) {
+        return res.status(400).json({
+          message: "An ADMIN already exists",
+          success: false,
+        });
+      }
+    }
+    
 
 // bcrypt.hashSync(data.password) le password lai hash garxa 
   const hashedPassword = bcrypt.hashSync(data.password);
