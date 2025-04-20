@@ -22,7 +22,7 @@ router.post("/", createUser);
 router.post("/merchant", auth, roleBasedAuth(ROLE_ADMIN), createMerchant);
 
 // /api/users/:id
-router.put("/:id", auth, roleBasedAuth(ROLE_ADMIN), updateUser);
+router.put("/:id", auth, updateUser);
 
 // /api/users/:id
 router.delete("/:id", auth, roleBasedAuth(ROLE_ADMIN), deleteUser);
