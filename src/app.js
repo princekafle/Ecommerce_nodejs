@@ -12,6 +12,7 @@ import multer from "multer";
 import orderRoute from "./routes/orderRoute.js";
 import viewRoute from './/routes/viewRoute.js'
 dotenv.config();
+import cors from "cors";
 
 const app = express();
 connectDB();
@@ -20,6 +21,8 @@ const upload = multer({
   // dest: "uploads/", // yesle chai euta upload vanne file banaera tesma file store garxa yei folder ma locallacy 
   storage: multer.memoryStorage(), // yesle chai file lai ram memory ma temporarily store garxa
 });
+app.use(cors());
+
 app.use(logger); // hamile yaha logger middleware lai global level ma use gareko xau but yeslai hamile specific route ma ni use garna sakinxa
 
 // yesle chai hamile json data lai parse garera req.body ma store garxa
