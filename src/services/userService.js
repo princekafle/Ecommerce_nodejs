@@ -41,6 +41,7 @@ const updateUser = async (id, data) => {
     address: data.address,
     name: data.name,
     phone: data.phone,
+    roles: data.roles,
   };
 
   if (data.password) updateData.password = bcrypt.hashSync(data.password);
