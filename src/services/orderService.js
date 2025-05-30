@@ -9,7 +9,10 @@ const getAllOrders = async (query) => {
   return await Order.find(statusQuery)
     .sort({ createdAt: -1 })
     .populate("orderItems.product")
-    .populate("user", ["name", "email", "phone", "address"]);
+    .populate("user", ["name", "email", "phone", "address"])
+    .populate("payment", ["paymentMethod", "status"])
+    .lean();
+  //.lean() Converts the Mongoose documents into plain JavaScript objects.
 };
 
 const getOrdersByUser = async (query, userId) => {
