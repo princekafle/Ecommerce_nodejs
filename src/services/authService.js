@@ -88,7 +88,7 @@ const resetPassword = async (userId, token, password) => {
   // yesle chai ResetPassword collection ko yesto data find garxa jasma userId ra token match garxa
   const data = await ResetPassword.findOne({
     userId, // user id match garxa req bata aako ra database ma vako , if yo duitai condition ok xa vane resetpassword model ma vako specific id vako user data return garxa 
-    expiresAt: { $gt: Date.now() }, // yesle chai ahile ko date bata 5 minute paxi ko date samma check garxa
+    expiresAt: { $gt: Date.now() }, // yesle chai ahile ko date paxi ko date samma check garxa
   });
 // database ma vako token ra user bata aako token match garxa
   if (!data || data.token !== token) {
