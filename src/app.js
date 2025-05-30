@@ -25,6 +25,11 @@ app.use(
   cors({
     origin: process.env.APP_URL,
     credentials: true,
+//     Then credentials: true ensures:
+
+// The browser sends cookies along with every request to your backend.
+
+// Your backend accepts them and responds appropriately.
   })
 );
 
