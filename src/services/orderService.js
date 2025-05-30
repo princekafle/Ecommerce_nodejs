@@ -23,6 +23,8 @@ const getOrdersByUser = async (query, userId) => {
     .sort({ createdAt: -1 })
     .populate("orderItems.product") //esle product ko detail haru ni dekhauxa 
     .populate("user", ["name", "email", "phone", "address"]); // user ko detail haru  dekhauxa
+    .populate("payment", ["paymentMethod", "status"])
+    .lean();
 };
 
 const getOrderById = async (id) => {
