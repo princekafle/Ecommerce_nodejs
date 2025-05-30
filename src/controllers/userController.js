@@ -23,10 +23,24 @@ const createMerchant = async (req, res) => {
 };
 
 const updateUser = async (req, res) => {
-  try {
-    const user = await userService.updateUser(req.params.id, req.body);
+ const id = req.params.id;
+  const loggedInUser = req.user;
 
-    res.json(user);
+  try {
+    const user = await userService.getUserById(id);
+
+    if (!user) return res.status(404).send("User not found.");
+
+    if (
+      loggedInUser.id != user.id &&
+      !loggedInUser.roles.includes(ROLE_ADMIN)
+    ) {
+      return res.status(403).send("Access denied");
+    }
+
+    const data = await userService.updateUser(id, req.body);
+
+    res.json(data);
   } catch (error) {
     res.status(error.statusCode || 500).send(error.message);
   }
