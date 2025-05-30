@@ -1,4 +1,4 @@
-import { ROLE_MERCHANT } from "../constants/roles.js";
+import { ROLE_MERCHANT,ROLE_ADMIN } from "../constants/roles.js";
 import { formatUserData } from "../helpers/dataFormatter.js";
 import userService from "../services/userService.js";
 
