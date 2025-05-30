@@ -53,6 +53,17 @@ const orderSchema = new mongoose.Schema({
     type: Date,
     default: Date.now(),
   },
+
+  orderSchema.virtual("payment", {
+  ref: "Payment",
+  localField: "_id",
+  foreignField: "order",
+  justOne: true,
+  options: { sort: { createdAt: -1 } },
+});
+
+orderSchema.set("toObject", { virtuals: true });
+orderSchema.set("toJSON", { virtuals: true });
 });
 
 const model = mongoose.model("Order", orderSchema);
