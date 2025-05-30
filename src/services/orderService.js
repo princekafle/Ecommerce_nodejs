@@ -4,9 +4,9 @@ import Order from '../models/Order.js'
 import payViaKhalti from '../utils/khalti.js'
 
 const getAllOrders = async (query) => {
-  return await Order.find({
-    status: query.status || ORDER_STATUS_PENDING,
-  })
+  const statusQuery = query.status ? { status: query.status } : {};
+
+  return await Order.find(statusQuery)
     .sort({ createdAt: -1 })
     .populate("orderItems.product")
     .populate("user", ["name", "email", "phone", "address"]);
