@@ -10,7 +10,7 @@ import authRoute from "./routes/authRoute.js";
 import connectCloudinary from "./config/cloudinary.js";
 import multer from "multer";
 import orderRoute from "./routes/orderRoute.js";
-import viewRoute from './/routes/viewRoute.js'
+import viewRoute from './routes/viewRoute.js'
 dotenv.config();
 import cors from "cors";
 
